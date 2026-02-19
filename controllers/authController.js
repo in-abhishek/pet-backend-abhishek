@@ -36,10 +36,10 @@ const login = async (req, res) => {
         const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
         const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 
-        res.cookie('refreshToken', refreshToken, {
+       res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', 
-            sameSite: 'Lax',
+            secure: true,          
+            sameSite: 'None',      
             path: '/',
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
