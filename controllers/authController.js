@@ -80,11 +80,11 @@ const refreshToken = (req, res) => {
 
 const logOut = (req, res) => {
     res.clearCookie("refreshToken", {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
-        path: "/"
-    });
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+    path: "/"
+  });
 
     res.json({ message: "Logout successful" });
 };
